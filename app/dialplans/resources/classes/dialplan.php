@@ -1160,7 +1160,10 @@ class dialplan {
 						$dialplan_contexts = array_unique($dialplan_contexts, SORT_STRING);
 						$cache             = new cache;
 						foreach ($dialplan_contexts as $dialplan_context) {
-							$cache->delete("dialplan:" . $dialplan_context);
+							// the freeswitch lua app creates cache keys like
+							// "dialplan:context:12345678", make sure all context and context:number
+							// cache keys are deleted by adding "*"
+							$cache->delete("dialplan:" . $dialplan_context."*");
 						}
 					}
 
@@ -1245,7 +1248,10 @@ class dialplan {
 						$dialplan_contexts = array_unique($dialplan_contexts, SORT_STRING);
 						$cache             = new cache;
 						foreach ($dialplan_contexts as $dialplan_context) {
-							$cache->delete("dialplan:" . $dialplan_context);
+							// the freeswitch lua app creates cache keys like
+							// "dialplan:context:12345678", make sure all context and context:number
+							// cache keys are deleted by adding "*"
+							$cache->delete("dialplan:" . $dialplan_context."*");
 						}
 					}
 
@@ -1334,7 +1340,10 @@ class dialplan {
 						$dialplan_contexts = array_unique($dialplan_contexts, SORT_STRING);
 						$cache             = new cache;
 						foreach ($dialplan_contexts as $dialplan_context) {
-							$cache->delete("dialplan:" . $dialplan_context);
+							// the freeswitch lua app creates cache keys like
+							// "dialplan:context:12345678", make sure all context and context:number
+							// cache keys are deleted by adding "*"
+							$cache->delete("dialplan:" . $dialplan_context."*");
 						}
 					}
 
@@ -1490,7 +1499,10 @@ class dialplan {
 						$dialplan_contexts = array_unique($dialplan_contexts, SORT_STRING);
 						$cache             = new cache;
 						foreach ($dialplan_contexts as $dialplan_context) {
-							$cache->delete("dialplan:" . $dialplan_context);
+							// the freeswitch lua app creates cache keys like
+							// "dialplan:context:12345678", make sure all context and context:number
+							// cache keys are deleted by adding "*"
+							$cache->delete("dialplan:" . $dialplan_context."*");
 						}
 					}
 

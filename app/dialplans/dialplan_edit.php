@@ -325,8 +325,13 @@
 			$cache = new cache;
 			if ($dialplan_context == "\${domain_name}" or $dialplan_context == "global") {
 				$dialplan_context = "*";
+				$cache->delete("dialplan:".$dialplan_context);
+			} else {
+				// the freeswitch lua app creates cache keys like
+				// "dialplan:context:12345678", make sure all context and context:number
+				// cache keys are deleted by adding "*"
+				$cache->delete("dialplan:".$dialplan_context."*");
 			}
-			$cache->delete("dialplan:".$dialplan_context);
 
 		//clear the destinations session array
 			if (isset($_SESSION['destinations']['array'])) {
